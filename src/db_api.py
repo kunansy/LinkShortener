@@ -56,8 +56,8 @@ def _short_link(long_link: str) -> str:
     return SHORTENER_URL.format(_hash_link(long_link))
 
 
-def today() -> datetime.date:
-    return datetime.date.today()
+def today() -> datetime.datetime:
+    return datetime.datetime.now()
 
 
 @contextmanager
