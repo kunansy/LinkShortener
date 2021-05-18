@@ -23,6 +23,14 @@ class Link(Base):
     short_link = Column(String, nullable=False, unique=True)
     created_at = Column(Date, nullable=False)
 
+    def _as_dict(self) -> dict[str, Any]:
+        return {
+            'link_id': self.link_id,
+            'long_link': self.long_link,
+            'short_link': self.short_link,
+            'created_at': self.created_at
+        }
+
     def json(self,
              exclude: Iterable[str] = None) -> dict[str, Any]:
         exclude = exclude or ()
