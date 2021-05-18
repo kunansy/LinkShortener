@@ -7,7 +7,7 @@ from typing import ContextManager, Any, Optional, Iterable
 
 from sqlalchemy import (
     Column, Integer,
-    String, Date, create_engine
+    String, DATETIME, create_engine
 )
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Session
@@ -23,7 +23,7 @@ class Link(Base):
     link_id = Column(Integer, primary_key=True)
     long_link = Column(String, nullable=False, unique=True)
     short_link = Column(String, nullable=False, unique=True)
-    created_at = Column(Date, nullable=False)
+    created_at = Column(DATETIME, nullable=False)
 
     def _as_dict(self) -> dict[str, Any]:
         return {
