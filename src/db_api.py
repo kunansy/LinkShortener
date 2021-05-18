@@ -101,9 +101,7 @@ def find_short_link(*,
 def get_link(*,
              link_id: int) -> Optional[Link]:
     with session() as ses:
-        return ses.query(Link)\
-            .get(link_id)\
-            .one()
+        return ses.query(Link).get(link_id)
 
 
 def delete_link(*,
