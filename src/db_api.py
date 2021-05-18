@@ -62,7 +62,7 @@ def today() -> datetime.date:
 
 @contextmanager
 def session(**kwargs) -> ContextManager[Session]:
-    new_session = Session(**kwargs, expire_on_commit=False, binds=engine)
+    new_session = Session(**kwargs, expire_on_commit=False, bind=engine)
     try:
         yield new_session
         new_session.commit()
