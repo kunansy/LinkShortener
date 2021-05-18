@@ -93,9 +93,10 @@ def short_link(*,
 def find_short_link(*,
                     long_link: str) -> Optional[Link]:
     with session() as ses:
-        return ses.query(Link)\
-            .filter_by(long_link=long_link)\
-            .one()
+        link = ses.query(Link)\
+            .filter_by(long_link=long_link)
+
+        return link.first()
 
 
 def get_link(*,
