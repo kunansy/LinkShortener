@@ -8,9 +8,8 @@ class LinkValidator(BaseModel):
 
     @validator('link')
     def validate_link(cls,
-                      link: bytes) -> str:
+                      link: str) -> str:
         pattern = re.compile(r'https?://.*')
-        link = link.decode('utf-8')
 
         if pattern.search(link) is None:
             raise ValueError("Wrong link format")
