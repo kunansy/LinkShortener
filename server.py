@@ -26,7 +26,7 @@ async def get_short_link(request: Request) -> HTTPResponse:
     return response.json(short_link.json(), status=status, indent=4)
 
 
-@app.delete('/delete_link/<int:link_id>')
+@app.delete('/delete_link/<link_id:int>')
 async def delete_link(request: Request,
                       link_id: int) -> HTTPResponse:
     if (link := db_api.get_link(link_id=link_id)) is None:
