@@ -1,0 +1,15 @@
+version: "3.7"
+
+volumes:
+    db:
+
+services:
+    link_shortener:
+        build: .
+        volumes:
+            - /db/:/app/data
+        environment:
+          TZ: "Europe/Moscow"
+          DB_URI: "/app/data/links.db"
+        ports:
+            - 127.0.0.1:8080:8081
