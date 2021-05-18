@@ -1,4 +1,5 @@
 import datetime
+import hashlib
 import os
 import sys
 from contextlib import contextmanager
@@ -44,6 +45,10 @@ class Link(Base):
 
 engine = create_engine(os.getenv('DB_URI'), encoding='utf-8')
 Base.metadata.create_all(engine)
+
+
+def _hash_link(long_link: str) -> str:
+    return hashlib.sha256(long_link.encode('utf-8')).hexdigest()[:4:-4]
 
 
 def _short_link(long_link: str) -> str:
