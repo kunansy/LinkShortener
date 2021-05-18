@@ -11,7 +11,7 @@ from src.validators import LinkValidator
 app = Sanic(__name__)
 
 
-@app.get('/get_short_link')
+@app.post('/get_short_link')
 async def get_short_link(request: Request) -> HTTPResponse:
     try:
         link = LinkValidator(link=request.body)
