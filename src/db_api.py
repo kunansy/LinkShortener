@@ -37,7 +37,7 @@ class Link(Base):
 
         return {
             key: value
-            for key, value in ...
+            for key, value in self._as_dict()
             if key not in exclude
         }
 
