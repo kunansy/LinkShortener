@@ -38,8 +38,8 @@ class Link(Base):
         exclude = exclude or ()
 
         return {
-            key: value
-            for key, value in self._as_dict()
+            key: str(value)
+            for key, value in self._as_dict().items()
             if key not in exclude
         }
 
