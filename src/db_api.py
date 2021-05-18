@@ -67,8 +67,9 @@ def session(**kwargs) -> ContextManager[Session]:
         yield new_session
         new_session.commit()
     except Exception as e:
-        print(e, file=sys.stderr)
+        print(repr(e), file=sys.stderr)
         new_session.rollback()
+        raise e from None
     finally:
         new_session.close()
 
