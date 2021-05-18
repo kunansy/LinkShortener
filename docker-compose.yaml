@@ -6,10 +6,11 @@ volumes:
 services:
     link_shortener:
         build: .
+        restart: always
         volumes:
             - /db/:/app/data
         environment:
           TZ: "Europe/Moscow"
-          DB_URI: "/app/data/links.db"
+          DB_URI: "sqlite:///data/links.db"
         ports:
             - 127.0.0.1:8080:8081
