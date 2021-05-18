@@ -14,6 +14,7 @@ from sqlalchemy.orm import Session
 
 
 Base = declarative_base()
+SHORTENER_URL = "https://short.ru/{}"
 
 
 class Link(Base):
@@ -52,7 +53,7 @@ def _hash_link(long_link: str) -> str:
 
 
 def _short_link(long_link: str) -> str:
-    return long_link
+    return SHORTENER_URL.format(_hash_link(long_link))
 
 
 def today() -> datetime.date:
