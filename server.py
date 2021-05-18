@@ -23,7 +23,7 @@ async def get_short_link(request: Request) -> HTTPResponse:
         short_link = db_api.short_link(long_link=link.link)
         status = 201
 
-    return response.json(short_link, status=status, indent=4)
+    return response.json(short_link.json(), status=status, indent=4)
 
 
 @app.delete('/delete_link/<int:link_id>')
@@ -33,7 +33,7 @@ async def delete_link(request: Request,
         return HTTPResponse(status=404)
 
     db_api.delete_link(link_id=link_id)
-    return response.json(link, status=202)
+    return response.json(link.json(), status=202)
 
 
 if __name__ == "__main__":
